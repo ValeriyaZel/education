@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 let yandexInput = document.getElementsByName("text")[0];
-let SearchButton = document.querySelector(".button_theme_websearch");
+let SrBt = document.querySelector(".button_js_inited");
 
 let sites = {
     "xn----7sbab5aqcbiddtdj1e1g.xn--p1ai": ["Гобой", "Саксофон", "Валторна", "Фагот", "Скрипка", "Флейта", "Как звучит флейта"],
@@ -30,27 +30,27 @@ function getCookie(name) {
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-if (SearchButton!=undefined) {
+if (SrBt!=undefined) {
     document.cookie = "site="+site;
 }else{
     site = getCookie("site");
 }
-if (SearchButton!=undefined){
+if (SrBt!=undefined){
     let timerId = setInterval(()=>{
     yandexInput.value += keyword[i++];
     if (i==keyword.length){
         clearInterval(timerId);
-        document.getElementsByName("SearchButton")[0].click();
+        document.querySelector(".button_js_inited").click();
     }
 },500);
 }else if (location.hostname == "yandex.ru"){
     let links = document.links;
     let flag = true;
-    let numPage = document.querySelector(".pager__item").innerText;
+    let numPage = document.querySelector(".pager__item_kind_next");
     for (let i=0; i<links.length; i++){
          let link = links[i];
          if(link.href.indexOf(site) != -1){
-             setTimeout(()=>links[i].click(),2000);
+             setTimeout(()=>links[i].click(),1000);
              flag=false;
             break;
          }
