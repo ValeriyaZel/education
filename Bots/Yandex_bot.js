@@ -46,7 +46,7 @@ if (SrBt!=undefined){
 }else if (location.hostname == "yandex.ru"){
     let links = document.links;
     let flag = true;
-    let numPage = document.querySelector(".pager__item_kind_next");
+    let numPage = document.querySelector(".pager__item");
     for (let i=0; i<links.length; i++){
          let link = links[i];
          if(link.href.indexOf(site) != -1){
